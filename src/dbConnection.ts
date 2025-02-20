@@ -4,12 +4,13 @@ import {
 } from '@langchain/community/vectorstores/pgvector';
 import { PoolConfig } from 'pg';
 import { OllamaEmbeddings } from '@langchain/ollama';
+import config from './config.js';
 
-const config = {
+const dbConfig = {
   postgresConnectionOptions: {
     type: 'postgres',
     host: 'localhost',
-    user: 'sujeet',
+    user: 'postgres',
     password: '',
   } as PoolConfig,
   tableName: 'langchain_pg_embedding',
@@ -25,9 +26,9 @@ const config = {
 
 const pgvectorStore = await PGVectorStore.initialize(
   new OllamaEmbeddings({
-    model: 'llama3',
+    model: config.model,
   }),
-  config,
+  dbConfig,
 );
 
 export default pgvectorStore;

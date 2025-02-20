@@ -1,5 +1,5 @@
 import { Document } from "@langchain/core/documents";
-import pgVectorStore  from "./dbConnection";
+import pgVectorStore  from "./dbConnection.js";
 
 const documents = [
   new Document({
