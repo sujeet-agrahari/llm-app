@@ -1,20 +1,14 @@
-import { ChatPromptTemplate } from '@langchain/core/prompts';
+import inquirer from "inquirer"
 
-const fetchDocumentPrompt = ChatPromptTemplate.fromMessages([
-  [
-    'system',
-    `You are an AI assistant with access to a knowledge base. Your task is to answer user queries based on the retrieved documents.
+async function promptUserQuery () {
+    const { userQuery } = await inquirer.prompt([
+      {
+        type: "input",
+        name: 'userQuery',
+        message: "🤖 How can I help you?"
+      }
+    ])
+    return userQuery
+  }
 
-      **Instructions:**
-      - Use only the retrieved information to answer the query.
-      - If the answer is not explicitly found in the documents, try to infer a relevant response.
-      - If no relevant information exists, say "I couldn't find relevant information in the documents."
-
-      Context:{context}`,
-  ], 
-  [
-    'user', '{input}'
-  ]
-])
-
-export { fetchDocumentPrompt };
+export { promptUserQuery }
