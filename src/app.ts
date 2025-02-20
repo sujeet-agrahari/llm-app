@@ -7,6 +7,11 @@ import { fetchDocumentPrompt } from './prompt';
 import { createStuffDocumentsChain, } from 'langchain/chains/combine_documents';
 import { createRetrievalChain } from 'langchain/chains/retrieval';
 
+import { seedDocuments } from './seeder';
+
+// uncomment to seed the database
+// await seedDocuments();
+
 const retriever = pgvectorStore.asRetriever({ searchType: 'similarity', k: 1 });
 
 const llm = new Ollama({ model: 'llama3'})
