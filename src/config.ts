@@ -1,5 +1,5 @@
 const config: Record<string, any> = {
-    model: 'llama3.2',
+    model: 'deepseek-r1',
 };
 
 export default config;
