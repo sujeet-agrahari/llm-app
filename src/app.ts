@@ -1,19 +1,19 @@
 import { Ollama } from '@langchain/ollama'
+import { createStuffDocumentsChain } from 'langchain/chains/combine_documents';
+import { createRetrievalChain } from 'langchain/chains/retrieval';
+import { createSpinner } from 'nanospinner';
+import 'dotenv/config';
 
 import pgvectorStore from './dbConnection.js';
 
 import { fetchDocumentPrompt } from './llm-prompt.js';
-
-import { createStuffDocumentsChain, } from 'langchain/chains/combine_documents';
-import { createRetrievalChain } from 'langchain/chains/retrieval';
-import { createSpinner } from 'nanospinner';
 
 import { seedDocuments } from './seeder.js';
 import config from './config.js';
 import { promptUserQuery } from './prompt.js';
 
 // uncomment to seed the database
-await seedDocuments();
+// await seedDocuments();
 
 // get user query
 const userQuery = await promptUserQuery();

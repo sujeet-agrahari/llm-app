@@ -3,45 +3,30 @@ import pgVectorStore  from "./dbConnection.js";
 
 const documents = [
   new Document({
-    pageContent: 'The sunset creates beautiful reflections on the lake',
-    metadata: { id: '101', location: 'lake', topic: 'nature' }
+    pageContent: 'http://atom-harmony-api.dev.int.kaplan.com/health',
+    metadata: { id: '120', title: 'Harmony API Health URL' },
   }),
   new Document({
-    pageContent: 'Mountain climbers reached the snowy peak yesterday',
-    metadata: { id: '102', location: 'mountain', topic: 'sports' }
+    pageContent: 'http://atom-exposure-api.dev.int.kaplan.com/health',
+    metadata: { id: '121', title: 'Exposure API Health URL' },
+  }),
+
+  new Document({
+    pageContent: 'http://atom-reporting-api.dev.int.kaplan.com/health',
+    metadata: { id: '122', title: 'Reporting API Health URL' },
   }),
   new Document({
-    pageContent: 'Jazz musicians perform every Friday at the downtown club',
-    metadata: { id: '103', location: 'downtown', topic: 'music' }
+    pageContent: 'http://atom-sequence-api.dev.int.kaplan.com/health',
+    metadata: { id: '123', title: 'Sequence API Health URL' },
   }),
   new Document({
-    pageContent: 'Local farmers showcase organic vegetables at the weekend market',
-    metadata: { id: '104', location: 'farmers market', topic: 'food' }
+    pageContent: 'http://atom-itemselection-api.dev.int.kaplan.com/health',
+    metadata: { id: '124', title: 'Item Selection API Health URL' },
   }),
   new Document({
-    pageContent: 'Scientists discovered a new species of butterfly in the rainforest',
-    metadata: { id: '105', location: 'rainforest', topic: 'science' }
+    pageContent: 'http://atom-studentperformance-api.dev.int.kaplan.com/health',
+    metadata: { id: '125', title: 'Student Performance API Health URL' },
   }),
-  new Document({
-    pageContent: 'The ancient temple ruins attract thousands of tourists annually',
-    metadata: { id: '106', location: 'temple', topic: 'history' }
-  }),
-  new Document({
-    pageContent: 'Tech startups gather for the annual innovation conference',
-    metadata: { id: '107', location: 'convention center', topic: 'technology' }
-  }),
-  new Document({
-    pageContent: 'Children learn about marine life at the aquarium',
-    metadata: { id: '108', location: 'aquarium', topic: 'education' }
-  }),
-  new Document({
-    pageContent: 'Local theater group presents Shakespeare under the stars',
-    metadata: { id: '109', location: 'park', topic: 'entertainment' }
-  }),
-  new Document({
-    pageContent: 'Urban gardeners transform rooftop into community green space',
-    metadata: { id: '110', location: 'rooftop', topic: 'community' }
-  })
 ];
 
 
