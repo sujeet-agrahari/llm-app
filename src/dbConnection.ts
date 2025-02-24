@@ -1,32 +1,20 @@
-import {
-  DistanceStrategy,
-  PGVectorStore,
-} from '@langchain/community/vectorstores/pgvector';
-import { PoolConfig } from 'pg';
+import { MongoDBAtlasVectorSearch } from '@langchain/mongodb';
+import { MongoClient, ServerApiVersion }  from 'mongodb';
 import embeddings from './embedding.js';
 
+const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 
-const dbConfig = {
-  postgresConnectionOptions: {
-    type: 'postgres',
-    host: 'localhost',
-    user: 'sujeet',
-    password: '',
-  } as PoolConfig,
-  tableName: 'langchain_pg_embedding',
-  columns: {
-    idColumnName: 'id',
-    vectorColumnName: 'embedding',
-    contentColumnName: 'document',
-    metadataColumnName: 'cmetadata',
-  },
-  // supported distance strategies: cosine (default), innerProduct, or euclidean
-  distanceStrategy: 'cosine' as DistanceStrategy,
-};
 
-const pgvectorStore = await PGVectorStore.initialize(
-  embeddings,
-  dbConfig,
-);
+const client = new MongoClient(uri, {
+});
 
-export default pgvectorStore;
+const collection = client.db(process.env.MONGODB_DATABASE).collection(process.env.MONGODB_COLLECTION || 'documents');
+
+const vectorStore = new MongoDBAtlasVectorSearch(embeddings, {
+  collection: collection,
+  indexName: 'default', // The name of the Atlas search index. Defaults to "default"
+  textKey: 'text', // The name of the collection field containing the raw content. Defaults to "text"
+  embeddingKey: 'embedding', // The name of the collection field containing the embedded text. Defaults to "embedding"
+});
+
+export default vectorStore;

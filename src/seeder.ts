@@ -1,5 +1,5 @@
 import { Document } from "@langchain/core/documents";
-import pgVectorStore  from "./dbConnection.js";
+import vectorStore  from "./dbConnection.js";
 
 const documents = [
   new Document({
@@ -31,5 +31,5 @@ const documents = [
 
 
 export async function seedDocuments() {
-  await pgVectorStore.addDocuments(documents, { ids : documents.map((doc) => doc.metadata.id)});
+  await vectorStore.addDocuments(documents, { ids : documents.map((doc) => doc.metadata.id)});
 }

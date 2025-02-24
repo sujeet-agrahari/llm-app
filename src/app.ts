@@ -22,6 +22,9 @@ const spinner = createSpinner('🤔 Thinking...').start()
 
 const retriever = pgvectorStore.asRetriever({ searchType: 'similarity', k: 1 });
 
+const r = await pgvectorStore.similaritySearch(userQuery, 1);
+console.log(r);
+
 const llm = new Ollama({ model: config.model})
 
 const combineDocsChain = await createStuffDocumentsChain({
